@@ -1,0 +1,25 @@
+<!-- This template extends the base template and represents the form for adding a new pet:
+
+
+{% extends 'base.html' %}
+<!-- Extend the base template -->
+
+{% block content %}
+<!-- Override the content block in the base template -->
+
+<h1>Add a Pet</h1>
+<!-- Heading for the add pet form -->
+
+<form method="POST">
+  <!-- Form with POST method to submit data -->
+
+  {% include "_form.html" %}
+  <!-- Include the form template for code reuse -->
+
+  <button class="btn btn-primary" type="submit">Add</button>
+  <!-- Add button with Bootstrap styling for form submission -->
+
+</form>
+
+{% endblock %}
+<!-- End the content block override -->

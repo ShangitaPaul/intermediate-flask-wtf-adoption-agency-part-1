@@ -1,0 +1,45 @@
+<!-- This template extends the base template and represents the list of pets -->
+
+{% extends 'base.html' %}
+<!-- Extend the base template -->
+
+{% block content %}
+<!-- Override the content block in the base template -->
+
+<h1>Our Pets</h1>
+<!-- Heading for the list of pets -->
+
+<div class="row pets-listing">
+  <!-- Row for displaying pet information -->
+
+  {% for pet in pets %}
+  <!-- Loop through each pet in the provided list -->
+
+  <div class="col-3">
+    <!-- Column for each pet with a width of 3 Bootstrap grid units -->
+
+    <img class="img-thumbnail" src="{{ pet.image_url() }}">
+    <!-- Display the pet's image with Bootstrap styling -->
+
+    <a href="{{ url_for('edit_pet', pet_id=pet.id) }}">{{ pet.name }}</a>
+    <!-- Display a link to edit the pet with the pet's name -->
+
+    {% if pet.available %} <b> is available!</b> {% endif %}
+    <!-- Display a bold message if the pet is available -->
+
+  </div>
+  {% else %}
+  <!-- If there are no pets -->
+
+  <div class="col-12">No pets yet.</div>
+  <!-- Display a message indicating no pets exist -->
+
+  {% endfor %}
+
+</div>
+
+<a class="btn btn-primary" href="{{ url_for('add_pet') }}">Add a Pet</a>
+<!-- Button with Bootstrap styling to add a new pet -->
+
+{% endblock %}
+<!-- End the content block override -->

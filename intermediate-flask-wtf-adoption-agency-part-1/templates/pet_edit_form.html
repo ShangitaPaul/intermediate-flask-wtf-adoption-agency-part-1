@@ -1,0 +1,43 @@
+<!-- This template extends the base template and represents the form for editing an existing pet:
+
+{% extends 'base.html' %}: Extends the base template to inherit its structure.
+{% block content %} and {% endblock %}: Overrides the content block in the base template to insert specific content.
+<h1>{{ pet.name }}</h1>: Displays the name of the pet as the heading.
+{% if pet.photo_url %}: Checks if the pet has a photo URL.
+<img class="img-fluid" src="{{ pet.photo_url }}">: Displays the pet's photo if available with Bootstrap styling.
+<h2>Update</h2>: Heading for the update pet form.
+<form method="POST">: Form with the POST method to submit data.
+{% include "_form.html" %}: Includes the _form.html template for reusing form rendering code.
+<button class="btn btn-primary" type="submit">Update</button>: Button with Bootstrap styling for submitting the form and updating the pet.-->
+
+{% extends 'base.html' %}
+<!-- Extend the base template -->
+
+{% block content %}
+<!-- Override the content block in the base template -->
+
+<h1>{{ pet.name }}</h1>
+<!-- Display the name of the pet as the heading -->
+
+{% if pet.photo_url %}
+<!-- Check if the pet has a photo URL -->
+<img class="img-fluid" src="{{ pet.photo_url }}">
+<!-- Display the pet's photo if available with Bootstrap styling -->
+{% endif %}
+
+<h2>Update</h2>
+<!-- Heading for the update pet form -->
+
+<form method="POST">
+  <!-- Form with POST method to submit data -->
+
+  {% include "_form.html" %}
+  <!-- Include the form template for code reuse -->
+
+  <button class="btn btn-primary" type="submit">Update</button>
+  <!-- Button with Bootstrap styling for updating the pet -->
+
+</form>
+
+{% endblock %}
+

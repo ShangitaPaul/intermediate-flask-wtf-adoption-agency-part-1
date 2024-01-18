@@ -1,0 +1,42 @@
+<!-- This is the base template for the adoption app:
+The head section contains the title and links to the Bootstrap theme ('minty') and a custom stylesheet ('adopt.css').
+The body section includes a navigation bar with a dark background and a branding link to the homepage.
+The main content container is wrapped in a <div> with the 'container' class for Bootstrap styling.
+Flash messages are displayed as alert messages.
+The {% block content %} and {% endblock %} define a block that child templates can override to insert their content. -->
+
+<html>
+
+<head>
+  <!-- Head section with title and links to stylesheets -->
+  <title>Adopt</title>
+  <!-- Link to the Bootstrap theme 'minty' from Bootswatch -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+  <!-- Link to a custom stylesheet 'adopt.css' in the static directory -->
+  <link rel="stylesheet" href="/static/adopt.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Navigation bar with a dark background -->
+  <a class="navbar-brand" href="/">Adopt!</a>
+  <!-- Branding link to the homepage -->
+</nav>
+
+<div class="container">
+  <!-- Main content container -->
+
+  {% for msg in get_flashed_messages() %}
+    <!-- Loop through flashed messages and display them as alert messages -->
+    <div class="alert alert-info">{{ msg }}</div>
+  {% endfor %}
+
+  {% block content %}
+    <!-- Content block to be overridden by child templates -->
+  {% endblock %}
+
+</div>
+
+</body>
+</html>

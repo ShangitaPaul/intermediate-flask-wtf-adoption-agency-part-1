@@ -1,0 +1,41 @@
+<!-- This template includes HTML code for rendering a form using Flask-WTF:
+-The hidden tag is included for CSRF protection.
+-A loop iterates through each form field, excluding hidden fields.
+-For each field, a form group is created for styling and structure.
+-The field label is rendered.
+-The form field is rendered with the 'form-control' class for Bootstrap styling.
+-Error messages, if any, are displayed in red text -->
+
+{{ form.hidden_tag() }}
+<!-- Include a hidden tag for CSRF protection -->
+
+{% for field in form if field.widget.input_type != 'hidden' %}
+  <!-- Iterate through each form field excluding hidden fields -->
+
+  <div class='form-group'>
+    <!-- Create a form group for styling and structure -->
+
+    {{ field.label }}
+    <!-- Render the field label -->
+
+    {{ field(class="form-control") }}
+    <!-- Render the form field with the 'form-control' class for Bootstrap styling -->
+
+    <span>
+        <!-- Display a span for error messages -->
+
+        {% if field.errors %}
+          <!-- Check if there are any validation errors for the field -->
+
+          {% for error in field.errors %}
+            <!-- Iterate through each error and display it in red text -->
+            <b class="text-danger">{{ error }}</b>
+          {% endfor %}
+
+        {% endif %}
+    </span>
+
+  </div>
+
+{% endfor %}
+<!-- End the loop through form fields -->
